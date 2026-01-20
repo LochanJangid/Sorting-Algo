@@ -12,7 +12,7 @@ int main()
     scanf("%d", &n);
 
     // Validate size of array
-    if(n <= 0){
+    if(n < 1){
         printf("Invalid length.\n");
         return 1;
     }
