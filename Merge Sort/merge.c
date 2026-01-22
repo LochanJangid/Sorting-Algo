@@ -4,7 +4,7 @@
 void divide(int n, int arr[n]);
 void merge_array(int len1, int len2, int arr1[len1], int arr2[len2], int n, int arr[n]);
 
-int main()
+int main()  
 {
     // input - size of array
     int n;
