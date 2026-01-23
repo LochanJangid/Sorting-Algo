@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void Quick_Sort(int a[], int low, int high);
-int Split(int a[], int low, int high);
+void Quick_Sort(int a[], int *low, int *high);
+int *Split(int a[], int *low, int *high);
 
 int main()
 {
@@ -39,7 +39,7 @@ int main()
     }
 
     // Call QuickSort Function
-    Quick_Sort(arr, 0, n - 1);
+    Quick_Sort(arr, arr, arr + (n-1));
 
     // print sorted array
     printf("Sorted Array: ");
@@ -53,13 +53,13 @@ int main()
     return 0;
 }
 
-void Quick_Sort(int a[], int low, int high)
+void Quick_Sort(int a[], int *low, int *high)
 {
     // Base Case:
     if (low >= high)
         return;
 
-    int middle;
+    int *middle;
     middle = Split(a, low, high);
 
     // Recursion
@@ -67,26 +67,26 @@ void Quick_Sort(int a[], int low, int high)
     Quick_Sort(a, middle + 1, high);
 }
 
-int Split(int a[], int low, int high)
+int *Split(int a[], int *low, int *high)
 {
-    int pivot = a[low];
+    int pivot = *low;
 
     while (1)
     {
         // number who is less than pitvot shift to left
-        while (low < high && pivot <= a[high])
+        while (low < high && pivot <= *high)
             high--;
         if (low >= high)
             break;
-        a[low++] = a[high];
+        *low++ = *high;
 
         // number who is greater than pivot shift to right
-        while (low < high && pivot >= a[low])
+        while (low < high && pivot >= *low)
             low++;
         if (low >= high)
             break;
-        a[high--] = a[low];
+        *high-- = *low;
     }
-    a[low] = pivot;
+    *low = pivot;
     return low;
 }

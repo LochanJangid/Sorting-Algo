@@ -30,6 +30,7 @@ int main()
     printf("Enter array: ");
     for (int i = 0; i < n; i++)
     {
+        // | This condition is work like scanf returns 1 if everything is ok
         if (scanf("%d", &arr[i]) != 1)
         {
             printf("Invalid Input.\n");
